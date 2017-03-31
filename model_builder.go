@@ -192,6 +192,14 @@ func (b modelBuilder) buildProperty(field reflect.StructField, model *Model, mod
 	case fieldKind == reflect.Ptr:
 		jsonName, prop := b.buildPointerTypeProperty(field, jsonName, modelName)
 		return jsonName, modelDescription, prop
+	case fieldKind == reflect.Int:
+		integert := "integer"
+		prop.Type = &integert
+		return jsonName, modelDescription, prop
+	case fieldKind == reflect.Bool:
+		boolt := "boolean"
+		prop.Type = &boolt
+		return jsonName, modelDescription, prop
 	case fieldKind == reflect.String:
 		stringt := "string"
 		prop.Type = &stringt
